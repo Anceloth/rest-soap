@@ -1,0 +1,185 @@
+<wsdl:definitions
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://endpoints.soap.ws.conseres.com/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+	name="OperacionesWSService"
+	targetNamespace="http://endpoints.soap.ws.conseres.com/">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://endpoints.soap.ws.conseres.com/"
+			elementFormDefault="unqualified"
+			targetNamespace="http://endpoints.soap.ws.conseres.com/"
+			version="1.0">
+			<xs:element name="division" type="tns:division" />
+			<xs:element name="divisionResponse"
+				type="tns:divisionResponse" />
+			<xs:element name="multiplicacion"
+				type="tns:multiplicacion" />
+			<xs:element name="multiplicacionResponse"
+				type="tns:multiplicacionResponse" />
+			<xs:element name="resta" type="tns:resta" />
+			<xs:element name="restaResponse" type="tns:restaResponse" />
+			<xs:element name="suma" type="tns:suma" />
+			<xs:element name="sumaResponse" type="tns:sumaResponse" />
+			<xs:complexType name="resta">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="x" type="xs:double" />
+					<xs:element minOccurs="0" name="y" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="restaResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="division">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="x" type="xs:double" />
+					<xs:element minOccurs="0" name="y" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="divisionResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="suma">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="x" type="xs:double" />
+					<xs:element minOccurs="0" name="y" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="sumaResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="multiplicacion">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="x" type="xs:double" />
+					<xs:element minOccurs="0" name="y" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="multiplicacionResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:double" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="resta">
+		<wsdl:part element="tns:resta" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="restaResponse">
+		<wsdl:part element="tns:restaResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="divisionResponse">
+		<wsdl:part element="tns:divisionResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="division">
+		<wsdl:part element="tns:division" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="suma">
+		<wsdl:part element="tns:suma" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sumaResponse">
+		<wsdl:part element="tns:sumaResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="multiplicacion">
+		<wsdl:part element="tns:multiplicacion" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="multiplicacionResponse">
+		<wsdl:part element="tns:multiplicacionResponse"
+			name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="OperacionesWS">
+		<wsdl:operation name="resta">
+			<wsdl:input message="tns:resta" name="resta">
+			</wsdl:input>
+			<wsdl:output message="tns:restaResponse"
+				name="restaResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="division">
+			<wsdl:input message="tns:division" name="division">
+			</wsdl:input>
+			<wsdl:output message="tns:divisionResponse"
+				name="divisionResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="suma">
+			<wsdl:input message="tns:suma" name="suma">
+			</wsdl:input>
+			<wsdl:output message="tns:sumaResponse"
+				name="sumaResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="multiplicacion">
+			<wsdl:input message="tns:multiplicacion"
+				name="multiplicacion">
+			</wsdl:input>
+			<wsdl:output message="tns:multiplicacionResponse"
+				name="multiplicacionResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="OperacionesWSServiceSoapBinding"
+		type="tns:OperacionesWS">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="resta">
+			<soap:operation soapAction="resta" style="document" />
+			<wsdl:input name="resta">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="restaResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="division">
+			<soap:operation soapAction="division" style="document" />
+			<wsdl:input name="division">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="divisionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="suma">
+			<soap:operation soapAction="suma" style="document" />
+			<wsdl:input name="suma">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="sumaResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="multiplicacion">
+			<soap:operation soapAction="multiplicacion"
+				style="document" />
+			<wsdl:input name="multiplicacion">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="multiplicacionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="OperacionesWSService">
+		<wsdl:port binding="tns:OperacionesWSServiceSoapBinding"
+			name="OperacionesWSPort">
+			<soap:address
+				location="http://localhost:8080/hellowebservice-2/operaciones" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
